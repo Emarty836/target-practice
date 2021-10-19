@@ -1,0 +1,96 @@
+body{
+  margin:0;
+  background-image:url('images/sandy.jpeg');
+  /*background:#a0805b;*/
+}
+
+
+#top{
+  background:grey;
+  max-width:100%;
+  padding:10px;
+  opacity:1;
+  border-bottom: solid 2px black;
+}
+
+.circle{
+  height:20px;
+  width:20px;
+  border-radius: 100%;
+  background:blue;
+}
+
+#target{
+  position:relative;
+  top:100px;
+  left:100px;
+}
+
+h1{
+  text-align: center;
+  margin:5px;
+}
+
+h2{
+  text-align:center;
+  text-transform: uppercase;;
+}
+
+#sec{
+  text-align:center;
+  padding:0;
+  margin:0;
+  font-size: 20px;
+  text-transform: lowercase;;
+}
+
+.score{
+  border-radius:1px;
+  padding:0 2rem;
+  background:#b2b0b0;
+}
+
+#wrapper{
+  text-align: center;
+
+}
+
+button{
+  margin:10px;
+  text-transform: uppercase;
+}
+
+.ghost{
+  opacity:0;
+}
+
+.red{
+  background:#4c3923;
+}
+
+#white{
+  background:black;
+  width:20px;
+  height:20px;
+  position:absolute;
+  top:5px;
+  left:5px;
+  border-radius:100%;
+}
+
+#outer{
+  width:30px;
+  height:30px;
+
+  border-radius:100%;
+}
+
+#inner{
+  width:10px;
+  height:10px;
+
+  position:absolute;
+  top:5px;
+  left:5px;
+  border-radius:100%;
+}
