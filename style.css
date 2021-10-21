@@ -1,6 +1,10 @@
+:root{
+  --fill-textcolor: #b2b0b0;
+}
+
 body{
   margin:0;
-  background-image:url('sandy.jpeg');
+  background-image:url('images/sandy.jpeg');
   /*background:#a0805b;*/
 }
 
@@ -36,6 +40,14 @@ h2{
   text-transform: uppercase;;
 }
 
+#time_left{
+  background:var(--fill-textcolor);
+  position:absolute;
+  top:40px;
+  left:80%;
+  padding:5px 10px;
+}
+
 #sec{
   text-align:center;
   padding:0;
@@ -47,7 +59,7 @@ h2{
 .score{
   border-radius:1px;
   padding:0 2rem;
-  background:#b2b0b0;
+  background:var(--fill-textcolor);
 }
 
 #wrapper{

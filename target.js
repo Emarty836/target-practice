@@ -1,33 +1,71 @@
 const start = document.querySelector('#start');
 const target = document.querySelector('#target');
 const scoreBoard = document.querySelector('.score');
+const time = document.querySelector('#time_left');
 let score = 0;
+let timelimit = 8000;
+let orange = false;
+let countdown;
+
+function timer(seconds) {
+  clearInterval(countdown);
+  const now = Date.now();
+  const then = now + (seconds * 1000);
+  displayTimeLeft(seconds);
+  time.textContent=`:0${seconds}`;
+
+  countdown = setInterval(() => {
+    const secondsLeft = Math.round((then - Date.now())/1000);
+    console.log(secondsLeft);
+
+    if(secondsLeft<0) {
+    clearInterval(countdown);
+    return;
+  }
+
+  displayTimeLeft(secondsLeft);
+  }, 1000);
+}
+
+function displayTimeLeft(seconds){
+  const display = `:0${seconds}`;
+  time.textContent = display;
+}
 
 
 function gamesBegin() {
   target.addEventListener('click', second);
+  timer(8);
   console.log('its begun');
   scoreBoard.textContent = 0;
-  timeUp = false;
+  orange = false;
   score = 0;
   target.classList.remove('ghost');
   targetMove();
-  var sample = setTimeout(() => target.classList.add('ghost'), 5000);
+  var sample = setTimeout( function() {
+    target.classList.add('ghost');
+    orange = true;}
+    , timelimit);
+
+
   start.addEventListener('click', function() {
     clearTimeout(sample);
     gamesBegin();
   });
-
-  //target();
 }
 
 
 function second(e){
   if(!e.isTrusted) return;
-  console.log('yes');
   score++;
   scoreBoard.textContent = score;
-  targetMove();
+  target.classList.add('ghost');
+  setTimeout( function(){
+    console.log('meepo');
+    if (!orange){
+    target.classList.remove('ghost');
+    targetMove();}}
+    ,100);
 }
 
 function targetMove(){
@@ -35,6 +73,12 @@ function targetMove(){
   const y = Math.floor(Math.random() * (window.innerHeight * .6));
   target.style.transform = `translate(${x}px,${y}px)`;
 }
+
+
+start.addEventListener('click', gamesBegin);
+
+
+
 /*function target(){
     let object = document.createElement("div");
     object.classList.add('circle');
@@ -46,5 +90,4 @@ function targetMove(){
     start.addEventListener('click', () => object.remove());
 }*/
 
-start.addEventListener('click', gamesBegin);
-target.addEventListener('click', second);
+//target.addEventListener('click', second);
