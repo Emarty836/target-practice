@@ -12,7 +12,7 @@ function timer(seconds) {
   const now = Date.now();
   const then = now + (seconds * 1000);
   displayTimeLeft(seconds);
-  time.textContent=`:0${seconds}`;
+  //time.textContent=`:0${seconds}`; - not needed
 
   countdown = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now())/1000);
@@ -40,8 +40,8 @@ function gamesBegin() {
   scoreBoard.textContent = 0;
   orange = false;
   score = 0;
-  target.classList.remove('ghost');
   targetMove();
+  target.classList.remove('ghost');
   var sample = setTimeout( function() {
     target.classList.add('ghost');
     orange = true;}
@@ -69,9 +69,12 @@ function second(e){
 }
 
 function targetMove(){
-  const x = Math.floor(Math.random() * (window.innerWidth * .8));
-  const y = Math.floor(Math.random() * (window.innerHeight * .6));
+  const x = Math.floor((Math.random() - .5) * 1.9 * (window.innerWidth * .5));
+  const y = Math.floor((Math.random() - .5) * 1.9 *  (window.innerHeight * .35));
+  console.log(target);
   target.style.transform = `translate(${x}px,${y}px)`;
+  console.log(x,y);
+  console.log(target);
 }
 
 
